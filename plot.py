@@ -1,7 +1,7 @@
 from matplotlib import pyplot as plt
 import seaborn as sns
 
-def plot_sample(sample, bins=20, xlim=(0., 1.), ylim=(0., 10.), element='step'):
+def plot_sample(sample, bins=20, xlim=(0., 1.), ylim=(0., 10.), element='step', binrange=((0., 1.), (0., 1.), (0., 1.))):
     plt.figure(figsize=(10, 6))
     plt.suptitle('Prior Distribution')
 
@@ -12,7 +12,7 @@ def plot_sample(sample, bins=20, xlim=(0., 1.), ylim=(0., 10.), element='step'):
     plt.legend(loc='upper right')
 
     plt.subplot(322)
-    sns.histplot(sample[:, 0], stat='density', bins=bins, binrange=(0,1),
+    sns.histplot(sample[:, 0], stat='density', bins=bins, binrange=binrange[0],
                 label='R', color='blue', element=element)
     plt.xlabel('p'), plt.ylabel('pdf')
     plt.xlim(xlim), plt.ylim(ylim)
@@ -25,7 +25,7 @@ def plot_sample(sample, bins=20, xlim=(0., 1.), ylim=(0., 10.), element='step'):
     plt.legend(loc='upper right')
 
     plt.subplot(324)
-    sns.histplot(sample[:, 1], stat='density', bins=bins, binrange=(0,1),
+    sns.histplot(sample[:, 1], stat='density', bins=bins, binrange=binrange[1],
                 label='SR', color='red', element=element)
     plt.xlabel('p'), plt.ylabel('pdf')
     plt.xlim(xlim), plt.ylim(ylim)
@@ -38,7 +38,7 @@ def plot_sample(sample, bins=20, xlim=(0., 1.), ylim=(0., 10.), element='step'):
     plt.legend(loc='upper right')
 
     plt.subplot(326)
-    sns.histplot(sample[:, 2], stat='density', bins=bins, binrange=(0,1),
+    sns.histplot(sample[:, 2], stat='density', bins=bins, binrange=binrange[2],
                 label='SSR', color='green', element=element)
     plt.xlabel('p'), plt.ylabel('pdf')
     plt.xlim(xlim), plt.ylim(ylim)
